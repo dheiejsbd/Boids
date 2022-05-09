@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
-public class BoidsUnit : MonoBehaviour
+public class Boid : MonoBehaviour
 {
     Boids Boids;
     float speed;

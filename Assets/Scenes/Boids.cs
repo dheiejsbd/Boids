@@ -36,7 +36,7 @@ public class Boids : MonoBehaviour
         for (int i = 0; i < Count; i++)
         {
             GameObject instance = Instantiate(obj, transform);
-            instance.GetComponent<BoidsUnit>().OnInitialized(this);
+            instance.GetComponent<Boid>().OnInitialized(this);
 
             if(Space3D)
             {
