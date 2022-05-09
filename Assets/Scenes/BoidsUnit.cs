@@ -16,30 +16,36 @@ public class BoidsUnit : MonoBehaviour
     }
     void Update()
     {
-        Transform[] targets = Change(Physics.OverlapSphere(transform.position, Boids.NeighbourRadius), (Collider coll) => coll.transform);
-
+        Transform[] targets = Change(Physics.OverlapSphere(transform.position, Boids.SeparationRadius), (Collider coll) => coll.transform);
+        
+        
         if(targets.Length > Boids.maxNeighbourCount)
         {
             var t = new List<Transform>();
             int count = 0;
+
             for (int i = 0; i < targets.Length; i++)
             {
-                if(Vector3.Angle(transform.forward, targets[i].position - transform.position) <= Boids.fov)
-                {
-                    count++;
-                    t.Add(targets[i]);
-                    if (count == Boids.maxNeighbourCount) break;
-                }
+                 t.Add(targets[i]);
             }
             targets = t.ToArray();
         }
-        Debug.DrawRay(transform.position, Separation(targets).normalized, Color.red);
-        Debug.DrawRay(transform.position, Alignment(targets).normalized, Color.blue);
-        Debug.DrawRay(transform.position, Cohesion(targets).normalized, Color.green);
 
         var SeparationVec = Separation(targets).normalized * Boids.SeparationWight;
+        Debug.DrawRay(transform.position, Separation(targets).normalized, Color.red);
+
+
+
+        
+
+        targets = Change(Physics.OverlapSphere(transform.position, Boids.NeighbourRadius), (Collider coll) => coll.transform);
+
+
         var  AlignmentVec = Alignment(targets).normalized * Boids.AlignmentWight;
+        Debug.DrawRay(transform.position, Alignment(targets).normalized, Color.blue);
+        
         var   CohesionVec = Cohesion(targets).normalized * Boids.CohesionWight;
+        Debug.DrawRay(transform.position, Cohesion(targets).normalized, Color.green);
         
         var boundsVec = Bounds() * Boids.BoundsWight;
         var obstacle = Obstacle().normalized * Boids.obstacleWight;

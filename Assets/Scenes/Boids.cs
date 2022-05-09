@@ -16,6 +16,7 @@ public class Boids : MonoBehaviour
     public float RotateSpeed = 1f;
     public float fov;
     public float NeighbourRadius = 10;
+    public float SeparationRadius = 5;
     public int maxNeighbourCount = 50;
     public float obstacleDist;
     public LayerMask obstacleLayer;

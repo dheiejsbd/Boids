@@ -349,12 +349,13 @@ MonoBehaviour:
   RotateSpeed: 1
   fov: 140
   NeighbourRadius: 10
+  SeparationRadius: 3
   maxNeighbourCount: 10
   obstacleDist: 3
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 64
-  SeparationWight: 2.51
+  SeparationWight: 7.01
   AlignmentWight: 3
   CohesionWight: 1.5
   BoundsWight: 1.29
