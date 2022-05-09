@@ -84,7 +84,7 @@ public class Boid : MonoBehaviour
     Vector3 Separation(Transform[] _targets)
     {
         Vector3[] targets = Change(_targets, (Transform target) => transform.position - target.position);
-        return Average(targets);
+        return Average(targets, (Vector3 vec) => vec.normalized * vec.magnitude / Boids.SeparationRadius);
     }
     //무리의 평균 이동방향
     Vector3 Alignment(Transform[] _targets)
